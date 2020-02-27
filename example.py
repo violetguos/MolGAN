@@ -16,11 +16,11 @@ n_critic = 5
 metric = 'validity,sas'
 n_samples = 5000
 z_dim = 8
-epochs = 10
-save_every = None
+epochs = 2
+save_every = 2
 
 data = SparseMolecularDataset()
-data.load('data/gdb9_9nodes.sparsedataset')
+data.load('data/blocks_reproc.sparsedataset')
 
 steps = (len(data) // batch_dim)
 
@@ -209,6 +209,6 @@ trainer.train(batch_dim=batch_dim,
               test_fetch_dict=test_fetch_dict,
               test_feed_dict=test_feed_dict,
               save_every=save_every,
-              directory='', # here users need to first create and then specify a folder where to save the model
+              directory='output', # here users need to first create and then specify a folder where to save the model
               _eval_update=_eval_update,
               _test_update=_test_update)
